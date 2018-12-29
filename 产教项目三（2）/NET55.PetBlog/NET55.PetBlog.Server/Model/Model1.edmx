@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PetBlogModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PetBlogModelStoreContainer">
+          <EntitySet Name="Articl_Words" EntityType="PetBlogModel.Store.Articl_Words" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImgList" EntityType="PetBlogModel.Store.ImgList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="News" EntityType="PetBlogModel.Store.News" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PetComment" EntityType="PetBlogModel.Store.PetComment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PetInfo" EntityType="PetBlogModel.Store.PetInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PetServer" EntityType="PetBlogModel.Store.PetServer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PetType" EntityType="PetBlogModel.Store.PetType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInfo" EntityType="PetBlogModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="PetBlogModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_NewsImgList" Association="PetBlogModel.Store.FK_NewsImgList">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgList" EntitySet="ImgList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PetTypePetInfo" Association="PetBlogModel.Store.FK_PetTypePetInfo">
+            <End Role="PetType" EntitySet="PetType" />
+            <End Role="PetInfo" EntitySet="PetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfoNews" Association="PetBlogModel.Store.FK_UserInfoNews">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfoPetInfo" Association="PetBlogModel.Store.FK_UserInfoPetInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="PetInfo" EntitySet="PetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersPetComment" Association="PetBlogModel.Store.FK_UsersPetComment">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PetComment" EntitySet="PetComment" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Articl_Words">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WordPattern" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsForbid" Type="bit" Nullable="false" />
+          <Property Name="IsMod" Type="bit" Nullable="false" />
+          <Property Name="ReplaceWord" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImgList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IngUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="NewsID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Det" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="ImgUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="UserInfoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Det" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommentTime" Type="datetime" Nullable="false" />
+          <Property Name="UsersID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImgUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Det" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="PetTypeID" Type="int" Nullable="false" />
+          <Property Name="UserInfoID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PetServer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImgUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Eamil" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BusinessTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Classify" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="LocalX" Type="float" Nullable="false" />
+          <Property Name="LocalY" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserPass" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RegTime" Type="datetime" Nullable="false" />
+          <Property Name="Eamil" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HeadUrl" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Pwd" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Sex" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HeadImg" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Eamil" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_NewsImgList">
+          <End Role="News" Type="PetBlogModel.Store.News" Multiplicity="1" />
+          <End Role="ImgList" Type="PetBlogModel.Store.ImgList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImgList">
+              <PropertyRef Name="NewsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PetTypePetInfo">
+          <End Role="PetType" Type="PetBlogModel.Store.PetType" Multiplicity="1" />
+          <End Role="PetInfo" Type="PetBlogModel.Store.PetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PetInfo">
+              <PropertyRef Name="PetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfoNews">
+          <End Role="UserInfo" Type="PetBlogModel.Store.UserInfo" Multiplicity="1" />
+          <End Role="News" Type="PetBlogModel.Store.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="UserInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfoPetInfo">
+          <End Role="UserInfo" Type="PetBlogModel.Store.UserInfo" Multiplicity="1" />
+          <End Role="PetInfo" Type="PetBlogModel.Store.PetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PetInfo">
+              <PropertyRef Name="UserInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersPetComment">
+          <End Role="Users" Type="PetBlogModel.Store.Users" Multiplicity="1" />
+          <End Role="PetComment" Type="PetBlogModel.Store.PetComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PetComment">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetBlogModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PetBlogEntities4" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Articl_Words" EntityType="PetBlogModel.Articl_Words" />
+          <EntitySet Name="ImgList" EntityType="PetBlogModel.ImgList" />
+          <EntitySet Name="News" EntityType="PetBlogModel.News" />
+          <EntitySet Name="PetComment" EntityType="PetBlogModel.PetComment" />
+          <EntitySet Name="PetInfo" EntityType="PetBlogModel.PetInfo" />
+          <EntitySet Name="PetServer" EntityType="PetBlogModel.PetServer" />
+          <EntitySet Name="PetType" EntityType="PetBlogModel.PetType" />
+          <EntitySet Name="UserInfo" EntityType="PetBlogModel.UserInfo" />
+          <EntitySet Name="Users" EntityType="PetBlogModel.Users" />
+          <AssociationSet Name="FK_NewsImgList" Association="PetBlogModel.FK_NewsImgList">
+            <End Role="News" EntitySet="News" />
+            <End Role="ImgList" EntitySet="ImgList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfoNews" Association="PetBlogModel.FK_UserInfoNews">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersPetComment" Association="PetBlogModel.FK_UsersPetComment">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PetComment" EntitySet="PetComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PetTypePetInfo" Association="PetBlogModel.FK_PetTypePetInfo">
+            <End Role="PetType" EntitySet="PetType" />
+            <End Role="PetInfo" EntitySet="PetInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInfoPetInfo" Association="PetBlogModel.FK_UserInfoPetInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="PetInfo" EntitySet="PetInfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Articl_Words">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="WordPattern" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsForbid" Type="Boolean" Nullable="false" />
+          <Property Name="IsMod" Type="Boolean" Nullable="false" />
+          <Property Name="ReplaceWord" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ImgList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IngUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="NewsID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="News" Relationship="PetBlogModel.FK_NewsImgList" FromRole="ImgList" ToRole="News" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Det" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ImgUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="UserInfoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ImgList" Relationship="PetBlogModel.FK_NewsImgList" FromRole="News" ToRole="ImgList" />
+          <NavigationProperty Name="UserInfo" Relationship="PetBlogModel.FK_UserInfoNews" FromRole="News" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="PetComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Det" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CommentTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsersID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="PetBlogModel.FK_UsersPetComment" FromRole="PetComment" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PetInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Det" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="PetTypeID" Type="Int32" Nullable="false" />
+          <Property Name="UserInfoID" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PetType" Relationship="PetBlogModel.FK_PetTypePetInfo" FromRole="PetInfo" ToRole="PetType" />
+          <NavigationProperty Name="UserInfo" Relationship="PetBlogModel.FK_UserInfoPetInfo" FromRole="PetInfo" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="PetServer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ImgUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Eamil" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BusinessTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Classify" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="LocalX" Type="Double" Nullable="false" />
+          <Property Name="LocalY" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PetType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PetInfo" Relationship="PetBlogModel.FK_PetTypePetInfo" FromRole="PetType" ToRole="PetInfo" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserPass" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RegTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Eamil" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="HeadUrl" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="News" Relationship="PetBlogModel.FK_UserInfoNews" FromRole="UserInfo" ToRole="News" />
+          <NavigationProperty Name="PetInfo" Relationship="PetBlogModel.FK_UserInfoPetInfo" FromRole="UserInfo" ToRole="PetInfo" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Pwd" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Sex" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="HeadImg" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Eamil" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PetComment" Relationship="PetBlogModel.FK_UsersPetComment" FromRole="Users" ToRole="PetComment" />
+        </EntityType>
+        <Association Name="FK_NewsImgList">
+          <End Role="News" Type="PetBlogModel.News" Multiplicity="1" />
+          <End Role="ImgList" Type="PetBlogModel.ImgList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImgList">
+              <PropertyRef Name="NewsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfoNews">
+          <End Role="UserInfo" Type="PetBlogModel.UserInfo" Multiplicity="1" />
+          <End Role="News" Type="PetBlogModel.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="UserInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersPetComment">
+          <End Role="Users" Type="PetBlogModel.Users" Multiplicity="1" />
+          <End Role="PetComment" Type="PetBlogModel.PetComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PetComment">
+              <PropertyRef Name="UsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PetTypePetInfo">
+          <End Role="PetType" Type="PetBlogModel.PetType" Multiplicity="1" />
+          <End Role="PetInfo" Type="PetBlogModel.PetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PetType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PetInfo">
+              <PropertyRef Name="PetTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInfoPetInfo">
+          <End Role="UserInfo" Type="PetBlogModel.UserInfo" Multiplicity="1" />
+          <End Role="PetInfo" Type="PetBlogModel.PetInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PetInfo">
+              <PropertyRef Name="UserInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetBlogModelStoreContainer" CdmEntityContainer="PetBlogEntities4">
+          <EntitySetMapping Name="Articl_Words">
+            <EntityTypeMapping TypeName="PetBlogModel.Articl_Words">
+              <MappingFragment StoreEntitySet="Articl_Words">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WordPattern" ColumnName="WordPattern" />
+                <ScalarProperty Name="IsForbid" ColumnName="IsForbid" />
+                <ScalarProperty Name="IsMod" ColumnName="IsMod" />
+                <ScalarProperty Name="ReplaceWord" ColumnName="ReplaceWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImgList">
+            <EntityTypeMapping TypeName="PetBlogModel.ImgList">
+              <MappingFragment StoreEntitySet="ImgList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IngUrl" ColumnName="IngUrl" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="PetBlogModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Det" ColumnName="Det" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="UserInfoID" ColumnName="UserInfoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetComment">
+            <EntityTypeMapping TypeName="PetBlogModel.PetComment">
+              <MappingFragment StoreEntitySet="PetComment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Det" ColumnName="Det" />
+                <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
+                <ScalarProperty Name="UsersID" ColumnName="UsersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetInfo">
+            <EntityTypeMapping TypeName="PetBlogModel.PetInfo">
+              <MappingFragment StoreEntitySet="PetInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Det" ColumnName="Det" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="PetTypeID" ColumnName="PetTypeID" />
+                <ScalarProperty Name="UserInfoID" ColumnName="UserInfoID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetServer">
+            <EntityTypeMapping TypeName="PetBlogModel.PetServer">
+              <MappingFragment StoreEntitySet="PetServer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Eamil" ColumnName="Eamil" />
+                <ScalarProperty Name="BusinessTime" ColumnName="BusinessTime" />
+                <ScalarProperty Name="Classify" ColumnName="Classify" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="LocalX" ColumnName="LocalX" />
+                <ScalarProperty Name="LocalY" ColumnName="LocalY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PetType">
+            <EntityTypeMapping TypeName="PetBlogModel.PetType">
+              <MappingFragment StoreEntitySet="PetType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="PetBlogModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="Eamil" ColumnName="Eamil" />
+                <ScalarProperty Name="HeadUrl" ColumnName="HeadUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PetBlogModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="HeadImg" ColumnName="HeadImg" />
+                <ScalarProperty Name="Eamil" ColumnName="Eamil" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

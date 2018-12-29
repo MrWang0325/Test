@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1708F991-1E85-4E03-B07E-FC7978B3A88B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET55.PetBlog.Server</RootNamespace>
+    <AssemblyName>NET55.PetBlog.Server</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AipSdk">
+      <HintPath>Lib\AipSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\assets\css\admin.css" />
+    <Content Include="Admin\assets\css\amazeui.datatables.min.css" />
+    <Content Include="Admin\assets\css\amazeui.min.css" />
+    <Content Include="Admin\assets\css\app.css" />
+    <Content Include="Admin\assets\css\fullcalendar.min.css" />
+    <Content Include="Admin\assets\css\fullcalendar.print.css" />
+    <Content Include="Admin\assets\css\pageBarStyle.css" />
+    <Content Include="Admin\assets\img\a5.png" />
+    <Content Include="Admin\assets\img\k.jpg" />
+    <Content Include="Admin\assets\img\logo.png" />
+    <Content Include="Admin\assets\img\logoa.png" />
+    <Content Include="Admin\assets\img\logob.png" />
+    <Content Include="Admin\assets\img\user01.png" />
+    <Content Include="Admin\assets\img\user02.png" />
+    <Content Include="Admin\assets\img\user03.png" />
+    <Content Include="Admin\assets\img\user04.png" />
+    <Content Include="Admin\assets\img\user05.png" />
+    <Content Include="Admin\assets\img\user06.png" />
+    <Content Include="Admin\assets\img\user07.png" />
+    <Content Include="Admin\assets\i\app-icon72x72%402x.png" />
+    <Content Include="Admin\assets\i\examples\admin-chrome.png" />
+    <Content Include="Admin\assets\i\examples\admin-firefox.png" />
+    <Content Include="Admin\assets\i\examples\admin-ie.png" />
+    <Content Include="Admin\assets\i\examples\admin-opera.png" />
+    <Content Include="Admin\assets\i\examples\admin-safari.png" />
+    <Content Include="Admin\assets\i\examples\adminPage.png" />
+    <Content Include="Admin\assets\i\examples\blogPage.png" />
+    <Content Include="Admin\assets\i\examples\landing.png" />
+    <Content Include="Admin\assets\i\examples\landingPage.png" />
+    <Content Include="Admin\assets\i\examples\loginPage.png" />
+    <Content Include="Admin\assets\i\examples\sidebarPage.png" />
+    <Content Include="Admin\assets\i\favicon.png" />
+    <Content Include="Admin\assets\i\startup-640x1096.png" />
+    <Content Include="Admin\assets\js\amazeui.datatables.min.js" />
+    <Content Include="Admin\assets\js\amazeui.min.js" />
+    <Content Include="Admin\assets\js\app.js" />
+    <Content Include="Admin\assets\js\dataTables.responsive.min.js" />
+    <Content Include="Admin\assets\js\echarts.min.js" />
+    <Content Include="Admin\assets\js\fullcalendar.min.js" />
+    <Content Include="Admin\assets\js\gt.js" />
+    <Content Include="Admin\assets\js\iscroll.js" />
+    <Content Include="Admin\assets\js\jquery.min.js" />
+    <Content Include="Admin\assets\js\jquery.validate.min.js" />
+    <Content Include="Admin\assets\js\moment.js" />
+    <Content Include="Admin\assets\js\theme.js" />
+    <Content Include="Admin\html\css\amazeui.min.css" />
+    <Content Include="Admin\html\css\animate.min.css" />
+    <Content Include="Admin\html\css\petshow.css" />
+    <Content Include="Admin\html\html\ContentImg.html" />
+    <Content Include="Admin\html\html\Newest.html" />
+    <Content Include="Admin\html\html\News.html" />
+    <Content Include="Admin\html\html\Popularity.html" />
+    <Content Include="Admin\html\html\ShiBie.html" />
+    <Content Include="Admin\html\img\a1.jpg" />
+    <Content Include="Admin\html\img\a2.jpg" />
+    <Content Include="Admin\html\img\a3.jpg" />
+    <Content Include="Admin\html\img\azd.png" />
+    <Content Include="Admin\html\img\banner_bg.png" />
+    <Content Include="Admin\html\img\bannner_smallbg.png" />
+    <Content Include="Admin\html\img\c.png" />
+    <Content Include="Admin\html\img\d.png" />
+    <Content Include="Admin\html\img\font_line.png" />
+    <Content Include="Admin\html\img\font_yjy.png" />
+    <Content Include="Admin\html\img\font_zty.png" />
+    <Content Include="Admin\html\img\footdon.png" />
+    <Content Include="Admin\html\img\grey.gif" />
+    <Content Include="Admin\html\img\kj.png" />
+    <Content Include="Admin\html\img\loading.gif" />
+    <Content Include="Admin\html\img\loading1.gif" />
+    <Content Include="Admin\html\img\logo.png" />
+    <Content Include="Admin\html\img\l_bg.png" />
+    <Content Include="Admin\html\img\pgd.png" />
+    <Content Include="Admin\html\img\r_bg.png" />
+    <Content Include="Admin\html\img\tm.png" />
+    <Content Include="Admin\html\img\transparent.gif" />
+    <Content Include="Admin\html\img\tx.jpg" />
+    <Content Include="Admin\html\img\what_do.png" />
+    <Content Include="Admin\html\img\white.gif" />
+    <Content Include="Admin\html\img\wx.jpg" />
+    <Content Include="Admin\html\img\xx.png" />
+    <Content Include="Admin\html\img\y.png" />
+    <Content Include="Admin\html\html\Index.html" />
+    <Content Include="Admin\html\js\amazeui.lazyload.min.js" />
+    <Content Include="Admin\html\js\amazeui.min.js" />
+    <Content Include="Admin\html\js\countUp.min.js" />
+    <Content Include="Admin\html\js\jquery.min.js" />
+    <Content Include="Admin\html\js\petshow.js" />
+    <Content Include="Admin\Img\1.jpg" />
+    <Content Include="Admin\Img\5.jpg" />
+    <Content Include="Admin\Img\6.jpeg" />
+    <Content Include="Admin\Img\7.jpeg" />
+    <Content Include="Admin\Img\News\1.jpg" />
+    <Content Include="Admin\Img\News\2.png" />
+    <Content Include="Admin\Img\News\3.png" />
+    <Content Include="Admin\Img\News\4.png" />
+    <Content Include="Admin\Img\News\t1.jpg" />
+    <Content Include="Admin\Img\News\t2.jpg" />
+    <Content Include="Admin\Img\News\t3.jpg" />
+    <Content Include="Admin\Img\News\t4.jpg" />
+    <Content Include="Admin\Img\News\t5.jpg" />
+    <Content Include="Admin\Img\Pet\1.jpg" />
+    <Content Include="Admin\Img\Pet\2.jpg" />
+    <Content Include="Admin\Img\Pet\3.jpg" />
+    <Content Include="Admin\Img\Pet\4.jpg" />
+    <Content Include="Admin\Img\server1.jpg" />
+    <Content Include="Admin\Img\server2.jpg" />
+    <Content Include="Admin\Page\Add_News.aspx" />
+    <Content Include="Admin\Page\Add_pet.aspx" />
+    <Content Include="Admin\Page\Add_server.aspx" />
+    <Content Include="Admin\Page\Add_users.aspx" />
+    <Content Include="Admin\Page\ImgListManager.aspx" />
+    <Content Include="Admin\Page\Index.aspx" />
+    <Content Include="Admin\Page\Login.aspx" />
+    <Content Include="Admin\Page\NewsManager.aspx" />
+    <Content Include="Admin\Page\PetManager.aspx" />
+    <Content Include="Admin\Page\ServerManager.aspx" />
+    <Content Include="Admin\Page\Update_news.aspx" />
+    <Content Include="Admin\Page\Update_pet.aspx" />
+    <Content Include="Admin\Page\Update_server.aspx" />
+    <Content Include="Admin\Page\Update_users.aspx" />
+    <Content Include="Admin\Page\UsersManger.aspx" />
+    <Content Include="Admin\Sweet\sweet1.css" />
+    <Content Include="Admin\Sweet\sweet1.js" />
+    <Content Include="Model\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Ashx\AddImg.ashx.cs">
+      <DependentUpon>AddImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\CreateVali.ashx.cs">
+      <DependentUpon>CreateVali.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Delete_news.ashx.cs">
+      <DependentUpon>Delete_news.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Delete_pet.ashx.cs">
+      <DependentUpon>Delete_pet.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Delete_server.ashx.cs">
+      <DependentUpon>Delete_server.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Delete_user.ashx.cs">
+      <DependentUpon>Delete_user.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Newest.ashx.cs">
+      <DependentUpon>Newest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\NewsTest.ashx.cs">
+      <DependentUpon>NewsTest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\NewsTest2.ashx.cs">
+      <DependentUpon>NewsTest2.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\NewsTest3.ashx.cs">
+      <DependentUpon>NewsTest3.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\Popularity.ashx.cs">
+      <DependentUpon>Popularity.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\QueryPet.ashx.cs">
+      <DependentUpon>QueryPet.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\test.ashx.cs">
+      <DependentUpon>test.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Ashx\UploadPic.ashx.cs">
+      <DependentUpon>UploadPic.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Add_News.aspx.cs">
+      <DependentUpon>Add_News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Add_News.aspx.designer.cs">
+      <DependentUpon>Add_News.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Add_pet.aspx.cs">
+      <DependentUpon>Add_pet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Add_pet.aspx.designer.cs">
+      <DependentUpon>Add_pet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Add_server.aspx.cs">
+      <DependentUpon>Add_server.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Add_server.aspx.designer.cs">
+      <DependentUpon>Add_server.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Add_users.aspx.cs">
+      <DependentUpon>Add_users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Add_users.aspx.designer.cs">
+      <DependentUpon>Add_users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\ImgListManager.aspx.cs">
+      <DependentUpon>ImgListManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\ImgListManager.aspx.designer.cs">
+      <DependentUpon>ImgListManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\NewsManager.aspx.cs">
+      <DependentUpon>NewsManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\NewsManager.aspx.designer.cs">
+      <DependentUpon>NewsManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\PetManager.aspx.cs">
+      <DependentUpon>PetManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\PetManager.aspx.designer.cs">
+      <DependentUpon>PetManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\ServerManager.aspx.cs">
+      <DependentUpon>ServerManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\ServerManager.aspx.designer.cs">
+      <DependentUpon>ServerManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Update_news.aspx.cs">
+      <DependentUpon>Update_news.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Update_news.aspx.designer.cs">
+      <DependentUpon>Update_news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Update_pet.aspx.cs">
+      <DependentUpon>Update_pet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Update_pet.aspx.designer.cs">
+      <DependentUpon>Update_pet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Update_server.aspx.cs">
+      <DependentUpon>Update_server.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Update_server.aspx.designer.cs">
+      <DependentUpon>Update_server.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\Update_users.aspx.cs">
+      <DependentUpon>Update_users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\Update_users.aspx.designer.cs">
+      <DependentUpon>Update_users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Page\UsersManger.aspx.cs">
+      <DependentUpon>UsersManger.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Page\UsersManger.aspx.designer.cs">
+      <DependentUpon>UsersManger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BarHelper.cs" />
+    <Compile Include="Common\BaseCheck.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\GeetestLib.cs" />
+    <Compile Include="Model\Articl_Words.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImgList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MyContext.cs" />
+    <Compile Include="Model\News.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PetComment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PetInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PetServer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PetType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Users.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Admin\Ashx\CreateVali.ashx" />
+    <Content Include="Admin\assets\css\app.less" />
+    <Content Include="Admin\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Admin\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Admin\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Admin\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Admin\assets\fonts\FontAwesome.otf" />
+    <Content Include="Admin\Ashx\Login.ashx" />
+    <Content Include="Admin\Ashx\Delete_user.ashx" />
+    <Content Include="Admin\Ashx\Delete_server.ashx" />
+    <Content Include="Admin\Ashx\Delete_news.ashx" />
+    <Content Include="Admin\fonts\.gitkeep" />
+    <Content Include="Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Admin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Admin\fonts\FontAwesome.otf" />
+    <Content Include="Admin\fonts\tt0156m-webfont.eot" />
+    <Content Include="Admin\fonts\tt0156m-webfont.svg" />
+    <Content Include="Admin\fonts\tt0156m-webfont.ttf" />
+    <Content Include="Admin\fonts\tt0156m-webfont.woff" />
+    <Content Include="Admin\fonts\tt0156m-webfont.woff2" />
+    <Content Include="Admin\html\fonts\.gitkeep" />
+    <Content Include="Admin\html\fonts\fontawesome-webfont.eot" />
+    <Content Include="Admin\html\fonts\fontawesome-webfont.svg" />
+    <Content Include="Admin\html\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Admin\html\fonts\fontawesome-webfont.woff" />
+    <Content Include="Admin\html\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Admin\html\fonts\FontAwesome.otf" />
+    <Content Include="Admin\html\fonts\tt0156m-webfont.eot" />
+    <Content Include="Admin\html\fonts\tt0156m-webfont.svg" />
+    <Content Include="Admin\html\fonts\tt0156m-webfont.ttf" />
+    <Content Include="Admin\html\fonts\tt0156m-webfont.woff" />
+    <Content Include="Admin\html\fonts\tt0156m-webfont.woff2" />
+    <Content Include="Admin\html\js\.DS_Store" />
+    <Content Include="Admin\Ashx\test.ashx" />
+    <Content Include="Admin\Ashx\Delete_pet.ashx" />
+    <Content Include="Admin\Ashx\AddImg.ashx" />
+    <Content Include="Admin\Ashx\Popularity.ashx" />
+    <Content Include="Admin\Ashx\Newest.ashx" />
+    <Content Include="Admin\Ashx\NewsTest.ashx" />
+    <Content Include="Admin\Ashx\NewsTest2.ashx" />
+    <Content Include="Admin\Ashx\NewsTest3.ashx" />
+    <Content Include="Admin\Ashx\QueryPet.ashx" />
+    <EntityDeploy Include="Model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Admin\Ashx\UploadPic.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5744/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
